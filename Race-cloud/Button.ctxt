@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\r\n\ Permite\ mostrar\ los\ botones\ que\ existiran\ en\ el\ juego.\r\n\ \r\n\ @author\ \r\n\ @version\ \r\n
+comment1.params=ima
+comment1.target=Button(greenfoot.GreenfootImage)
+comment1.text=\r\n\ Constructor\ de\ la\ clase,\ inicializa\ la\ im\u00E1gen\ que\ utiliza\ el\ objeto\ de\ esta\ clase.\r\n
+comment2.params=
+comment2.target=void\ act()
+numComments=3
