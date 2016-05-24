@@ -20,4 +20,6 @@ comment6.text=\r\n\ manda\ la\ posicion\ que\ se\ creea\ en\ movimiento\r\n
 comment7.params=n
 comment7.target=greenfoot.GreenfootImage\ getImagen(int)
 comment7.text=\r\n\ Metodo\ que\ devolvera\ una\ imagen\ (tipo\ GreenfootImage)\r\n\ que\ contiene\ nuestra\ lista\ de\ imagenes\ y\ sera\ asignada\r\n\ a\ los\ distintos\ objetos\ del\ escenario.\r\n\ \r\n\ @param\ int\ Valor\ de\ la\ posici\u00F3n\ de\ la\ im\u00E1gen\ que\ se\r\n\ desea\ obtener.\r\n\ @return\ GreenfootImage\ -\ Im\u00E1gen\ contenida\ en\ la\ Lista\r\n\ en\ la\ posici\u00F3n\ especificada.\r\n
-numComments=8
+comment8.params=perso
+comment8.target=void\ eligePersonaje(int)
+numComments=9

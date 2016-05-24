@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bala extends Actor
 {
-    int dis=-15;
+    private int dis=-15;
     /**
      * Act - do whatever the BalaEnemigo wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

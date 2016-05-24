@@ -8,4 +8,6 @@ comment2.params=dis
 comment2.target=void\ mov(int)
 comment3.params=
 comment3.target=int\ limite()
-numComments=4
+comment4.params=co
+comment4.target=void\ eligeObstaculo(int)
+numComments=5

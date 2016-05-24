@@ -9,9 +9,9 @@ public class Personaje extends Actor
      * Act - do whatever the Crab wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-     private LinkedList <GreenfootImage> imagenes;
-    public int disp=0, pj;
-    int posicion=200, dis=30;
+    private LinkedList <GreenfootImage> imagenes;
+    private int disp=0, pj;
+    private int posicion=200, dis=30;
     
     
     public void act() 
@@ -59,20 +59,14 @@ public class Personaje extends Actor
        setLocation(x,y+dis);
        setImage(getImagen(pj+2));
       }
-      /*if(cadena == "space")
-      {
-       setImage(getImagen(pj+3));
-      }*/
       
       if(disp==15)
       {
       setImage(getImagen(pj));
       disp=0;
       }
-      //ganaPuntos();
-      //recibeDaño();
-       posicion+=dis;
       
+       posicion+=dis; 
     } 
     
     /**
@@ -145,5 +139,10 @@ public class Personaje extends Actor
     public GreenfootImage getImagen(int n)
     {
         return imagenes.get(n);
+    }
+    
+    public void eligePersonaje(int perso)
+    {
+        pj=perso;
     }
 }

@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Enemigo1 extends Actor
 {
+    
     /**
      * Act - do whatever the Enemigo1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -16,7 +17,7 @@ public class Enemigo1 extends Actor
     {
        
         movimiento();
-     
+        
        // Add your action code here.
     }    
         
@@ -39,6 +40,14 @@ public class Enemigo1 extends Actor
        setLocation(x,y+dis);
       
       }
-
     }
+     
+    public void eligeEnemigo(int nivel)
+    {   
+       if (nivel==2)
+        setImage("enemigo1.png");
+       if (nivel==3)
+        setImage("enemigo2.png");
+    }
+    
  }

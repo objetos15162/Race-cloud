@@ -14,22 +14,21 @@ import java.lang.Class;
 public class DragonWorld extends SWorld
 {
     //Variables de los distintos botones que se usan durante el juego.
-    private Button Start, Shop, Salir,psj1,psj2,psj3, Help;
-    
+    private Button Start, Shop, Salir,psj1,psj2,psj3, Help;  
     private LinkedList <GreenfootImage> imagenes;
     private LinkedList <GreenfootImage> vidas;
-    public Personaje p= new Personaje();
-    public Puntos c = new Puntos();
-    public Enemigo1 e1 = new Enemigo1();
-    public Bala b1 = new Bala();
-    public Vida v = new Vida();
-    int salida;
-    boolean existe = true;
-    public Obstaculo o = new Obstaculo();
+    private Personaje p= new Personaje();
+    private Puntos c = new Puntos();
+    private Enemigo1 e1 = new Enemigo1();
+    private Bala b1 = new Bala();
+    private Vida v = new Vida();
+    private int salida;
+    private boolean existe = true;
+    private  Obstaculo o = new Obstaculo();
     
-    public int i = 0, j = 0, lvl=0, no=0 , bg=10;
-    public int vida = 4;
-    public int co=0;
+    private int i = 0, j = 0, lvl=0, no=0 , bg=10;
+    private int vida = 4;
+    private int co=0;
   
   
 
@@ -201,44 +200,28 @@ public class DragonWorld extends SWorld
           
        boolean a; 
        int regreso= 0;
-       addObject(v,600,50);
-      
-       if (vida==3)
-           v.setImage("vida3.png");
-       if (vida==2)
-           v.setImage("vida2.png");
-       if (vida==1)
-           v.setImage("vida1.png");    
-       if (vida==0)
-       {
-           v.setImage("vida0.png");
-           regreso=2;
-        }
-     
        
+       addObject(v,600,50); 
+       v.eligeVida(vida);
+       e1.eligeEnemigo(lvl);
+       showText("Puntos: " + i, 200, 50);
+       showText("Vida: " + vida, 50, 50);
+       i= p.ganaPuntos(i,lvl,pExiste());
+       vida = p.recibeDaño(vida,pExiste());
+        
             if(j%2==0)
-       
             {
                 i=i+1;
                 puntos();
                 if((c.limite()/(lvl+1)) <= 0)
                 removeObject(c);
-
             }
             
             
             if(j%5==0)
-       
             {
-                i=i+1;
-                
-                if(co==0)
-                    o.setImage("obstaculo.png");
-                if(co==1)
-                    o.setImage("obstaculo1.png");
-                if(co==2)
-                    o.setImage("obstaculo2.png");    
-                 
+                i=i+1; 
+                o.eligeObstaculo(co); 
                 obstaculos();
                 if((o.limite()/(lvl+1)) <= 0)
                 {
@@ -248,15 +231,7 @@ public class DragonWorld extends SWorld
                     co=0;
                 }
             }
-            
-       
-            showText("Puntos: " + i, 200, 50);
-            showText("Vida: " + vida, 50, 50);
-           
-            i= p.ganaPuntos(i,lvl,pExiste());
-            
-            vida = p.recibeDaño(vida,pExiste());
-                  
+                       
             if(i==10 && no==0)
             {
              no=creaEnemigo();
@@ -266,7 +241,7 @@ public class DragonWorld extends SWorld
                {
                    balas();
                    if((b1.limite()/(lvl+1)) <= 0)
-                   removeObject(b1);
+                        removeObject(b1);
                }
              
              if (i >= 500)
@@ -281,7 +256,8 @@ public class DragonWorld extends SWorld
                  bg=12;
              }
              
-             
+             if (vida==0)
+                  regreso=2;
              
              if(vida == 0)
              {  
@@ -290,7 +266,8 @@ public class DragonWorld extends SWorld
              }
              
              if(p.posicion() > 39990)
-             winner();
+                winner();
+                
              return regreso;
             }
    /**
@@ -368,11 +345,14 @@ public class DragonWorld extends SWorld
         if(p != null)
         {
             if(Greenfoot.mouseClicked(psj1)) 
-                p.pj =0;
-            if(Greenfoot.mouseClicked(psj2)) 
-                p.pj =4;
+                p.eligePersonaje(0);
+                
+            if(Greenfoot.mouseClicked(psj2))
+                p.eligePersonaje(4);
+                
             if(Greenfoot.mouseClicked(psj3)) 
-                p.pj =8;
+                p.eligePersonaje(8);
+                
         
         }
     }
@@ -411,26 +391,7 @@ public class DragonWorld extends SWorld
     {
         return Shop;
     }
-    
- /*   public void loser()
-    {
-        removeObject(p);
-        p= new Personaje();
-        removeObjects(getObjects(null));
-        existe = false;
-        no=0;
-        salida =0;
-        lvl=0;
-        repaint();
-        setBackground("loser.jpg");
-         GreenfootImage hp = new GreenfootImage("loser.jpg");
-        setBackground(hp);
-        addObject(Salir,300,300);
-        //Greenfoot.delay(50);
-        
-        
-    }*/
-    
+   
     public void loser()
     {
         removeObjects(getObjects(null));
@@ -451,6 +412,11 @@ public class DragonWorld extends SWorld
         GreenfootImage hp = new GreenfootImage("winner.jpg");
         setBackground(hp);
         Greenfoot.stop();
+    }
+    
+    public int vidas()
+    {
+        return vida;
     }
 
     
